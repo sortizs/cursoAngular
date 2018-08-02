@@ -1,0 +1,16 @@
+<h1>Resultados de la b&uacute;squeda</h1>
+
+<div class="card-columns">
+    <div class="card animated fadeIn fast" *ngFor="let heroe of heroes, let i = index">
+        <img class="card-img-top" [src]="heroe.img" [alt]="heroe.nombre">
+        <div class="card-body">
+            <h5 class="card-title">{{ heroe.nombre }}</h5>
+            <p class="card-text">{{ heroe.bio }}}</p>
+            <p class="card-text"><small class="text-muted">{{ heroe.casa }} | {{ heroe.aparicion }}</small></p>
+
+            <button type="button" class="btn btn-outline-primary btn-block" (click)="verHeroe(i)">
+              Ver m&aacute;s...
+            </button>
+        </div>
+    </div>
+</div>
