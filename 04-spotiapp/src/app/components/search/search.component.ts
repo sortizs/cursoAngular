@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styles: []
+  styles: [],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
+  public artists: any[];
 
-  constructor() { }
+  constructor(private spotify: SpotifyService) {}
 
-  ngOnInit() {
+  search(searchString: string) {
+    console.log(searchString);
+    this.spotify.getArtist(searchString).subscribe(data => {
+      this.artists = data;
+    });
   }
-
 }
