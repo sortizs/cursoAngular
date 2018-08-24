@@ -1,13 +1,8 @@
-<div class="card-columns">
-  <div *ngFor="let newRelease of newReleases" class="card">
-    <img class="card-img-top" [src]="newRelease.images[0].url" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title"> {{ newRelease.name }} </h5>
-      <p class="card-text">
-        <span *ngFor="let artist of newRelease.artists" class="badge badge-dark">
-          {{ artist.name }}
-        </span>
-      </p>
-    </div>
-  </div>
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="alert alert-danger" *ngIf="error">
+  <h3> {{ errorMessage.error.error.status }} </h3>
+  <p> {{ errorMessage.error.error.message }} </p>
 </div>
+
+<app-cards [items]="newReleases"></app-cards>
