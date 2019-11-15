@@ -1,0 +1,61 @@
+<h4>Forms <small>Data approach</small></h4>
+<hr>
+<form [formGroup]="form" (ngSubmit)="saveChanges()">
+    <div>
+        <div class="form-group row" [ngClass]="{'has-danger': !form.get('name').valid}">
+            <label class="col-2 col-form-label">Name</label>
+            <div class="col-8">
+                <input type="text"
+                    autocomplete="off"
+                    class="form-control"
+                    placeholder="Name"
+                    formControlName="name">
+                <div class="form-control-feedback"
+                    *ngIf="form.controls['name'].errors?.required">
+                    The <i>name</i> field is required.
+                </div>
+                <div class="form-control-feedback"
+                    *ngIf="form.controls['name'].errors?.minlength">
+                    At least three(3) characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Last Name</label>
+            <div class="col-8">
+                <input type="text"
+                    autocomplete="off"
+                    name="last"
+                    class="form-control"
+                    placeholder="Last Name"
+                    formControlName="last">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Email</label>
+            <div class="col-8">
+                <input type="email"
+                    autocomplete="off"
+                    name="email"
+                    class="form-control"
+                    placeholder="example@example.com"
+                    formControlName="email">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary">
+                Guardar
+            </button>
+        </div>
+    </div>
+
+    <pre>
+        {{ form.valid }}
+    </pre>
+</form>
