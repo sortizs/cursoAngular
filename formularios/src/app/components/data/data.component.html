@@ -1,49 +1,74 @@
 <h4>Forms <small>Data approach</small></h4>
 <hr>
-<form [formGroup]="form" (ngSubmit)="saveChanges()">
+<form [formGroup]="userForm" (ngSubmit)="saveChanges()">
     <div>
-        <div class="form-group row" [ngClass]="{'has-danger': !form.get('name').valid}">
-            <label class="col-2 col-form-label">Name</label>
-            <div class="col-8">
-                <input type="text"
-                    autocomplete="off"
-                    class="form-control"
-                    placeholder="Name"
-                    formControlName="name">
-                <div class="form-control-feedback"
-                    *ngIf="form.controls['name'].errors?.required">
-                    The <i>name</i> field is required.
-                </div>
-                <div class="form-control-feedback"
-                    *ngIf="form.controls['name'].errors?.minlength">
-                    At least three(3) characters.
+        <div formGroupName="fullName">
+            <div class="form-group row"
+                [ngClass]="{'has-danger': !userForm.controls['fullName'].controls['name'].valid && userForm.touched}">
+                <label class="col-2 col-form-label">Name</label>
+                <div class="col-8">
+                    <input type="text" autocomplete="off" class="form-control" placeholder="Name"
+                        formControlName="name">
+                    <div class="form-control-feedback"
+                        *ngIf="userForm.get('fullName.name').errors?.required && userForm.touched">
+                        The <i>name</i> field is required.
+                    </div>
+                    <div class="form-control-feedback" *ngIf="userForm.get('fullName.name').errors?.minlength">
+                        At least three(3) characters.
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Last Name</label>
-            <div class="col-8">
-                <input type="text"
-                    autocomplete="off"
-                    name="last"
-                    class="form-control"
-                    placeholder="Last Name"
-                    formControlName="last">
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Last Name</label>
+                <div class="col-8">
+                    <input type="text" autocomplete="off" class="form-control" placeholder="Last Name"
+                        formControlName="lastName">
+                </div>
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Email</label>
             <div class="col-8">
-                <input type="email"
-                    autocomplete="off"
-                    name="email"
-                    class="form-control"
-                    placeholder="example@example.com"
-                    formControlName="email">
+                <input type="email" autocomplete="off" class="form-control"
+                    placeholder="example@example.com" formControlName="email">
             </div>
         </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Username</label>
+            <div class="col-8">
+                <input type="text" autocomplete="off" class="form-control"
+                formControlName="username" placeholder="Username">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Password</label>
+            <div class="col-8">
+                <input type="password" autocomplete="off" class="form-control"
+                formControlName="password">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Repeat password</label>
+            <div class="col-8">
+                <input type="password" autocomplete="off" class="form-control" formControlName="password2">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Hobbies</label>
+            <div class="col-md-8" formArrayName="hobbies">
+                <input *ngFor="let hobbie of userForm.controls['hobbies'].controls; let i = index"
+                    [formControlName]="i"
+                    type="text" class="form-control" autocomplete="off" >
+            </div>
+            <button (click)="addHobbie()" type="button" class="btn btn-success">Add</button>
+        </div>
+
     </div>
 
     <div class="form-group row">
@@ -56,6 +81,7 @@
     </div>
 
     <pre>
-        {{ form.valid }}
+        {{ userForm.valid }}
+        {{ userForm.status }}
     </pre>
 </form>
