@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div *ngIf="!_cs.user.uid"
+            class="col-md-12 text-center">
+            <h4>
+                Login with your favorite account
+            </h4>
+            <button (click)="login('google')"
+                type="button" class="btn btn-outline-primary mr-1">
+                Google
+            </button>
+            <button (click)="login('twitter')"
+                type="button" class="btn btn-outline-info">
+                Twitter
+            </button>
+        </div>
+        <div *ngIf="_cs.user.uid"
+            class="col-md-12 text-center">
+            <button (click)="_cs.logout()"
+                type="button" class="btn btn-outline-danger">
+                Log out
+            </button>
+        </div>
+    </div>
+</div>
