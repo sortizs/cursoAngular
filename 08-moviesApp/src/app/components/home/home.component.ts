@@ -9,12 +9,12 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class HomeComponent implements OnInit {
 
   nowPlaying: any;
+  populars: any;
 
   constructor(public _ms: MoviesService) {
-    this._ms.getNowPlaying().subscribe(data => {
-      console.log(data);
-      this.nowPlaying = data;
-    });
+    this._ms.getNowPlaying().subscribe(data => this.nowPlaying = data);
+
+    this._ms.getPopularChildren().subscribe(data => this.populars = data);
   }
 
   ngOnInit() { }

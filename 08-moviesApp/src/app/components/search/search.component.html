@@ -1,1 +1,32 @@
-<p>search works!</p>
+<div class="conatiner main-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Search:</label>
+                <input type="text" name="search"
+                    [(ngModel)]="search"
+                    (keyup.enter)="searchMovie()"
+                    class="form-control"
+                    placeholder="Search for a movie">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-columns">
+            <div class="card" *ngFor="let movie of _ms.movies">
+                <img [src]="movie | imgMovie" class="card-img-top" >
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p class="card-text text-justify">
+                        {{ movie.overview | slice:0:200 }}...
+                    </p>
+                    <button (click)="seeMore(movie.id)"
+                        class="btn btn-block btn-outline-primary"
+                        type="button">
+                        See more...
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

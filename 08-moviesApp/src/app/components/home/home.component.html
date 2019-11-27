@@ -8,66 +8,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <h1>Now playing on theaters
-                <i class="fas fa-theater-masks fa-sm fa-fw"></i>
-            </h1>
-            <hr>
-            <div>
-                <div id="nowPlaying" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li *ngFor="let item of nowPlaying; let i = index" data-target="#nowPlaying"
-                            [attr.data-slide-to]="i" [ngClass]="{'active': i == 0}"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div *ngFor="let item of nowPlaying; let i = index" class="carousel-item"
-                            [ngClass]="{'active': i == 0}">
-                            <img [src]="nowPlaying[i] | imgMovie" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h4>{{nowPlaying[i].title}}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#nowPlaying" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#nowPlaying" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+            <app-slider [movies]="nowPlaying | slice:0:6"
+                title="Now Playing on theaters" id="nowPlaying"></app-slider>
         </div>
         <div class="col-sm-6">
-            <h1>
-                Popular for all ages
-            </h1>
-            <hr>
-            <div>
-                <div id="nowPlaying" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li *ngFor="let item of nowPlaying; let i = index" data-target="#nowPlaying"
-                            [attr.data-slide-to]="i" [ngClass]="{'active': i == 0}"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div *ngFor="let item of nowPlaying; let i = index" class="carousel-item"
-                            [ngClass]="{'active': i == 0}">
-                            <img [src]="nowPlaying[i] | imgMovie" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h4>{{nowPlaying[i].title}}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#nowPlaying" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#nowPlaying" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+            <app-slider title="Popular for all ages"
+                [movies]="populars | slice:0:6" id="populars"></app-slider>
         </div>
     </div>
 </div>

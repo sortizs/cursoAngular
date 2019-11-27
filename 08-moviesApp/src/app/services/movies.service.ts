@@ -10,6 +10,8 @@ export class MoviesService {
   private apiKey: string;
   private url: string;
 
+  movies: any[] = [];
+
   constructor(private http: HttpClient) {
     this.url = 'https://api.themoviedb.org/3';
     this.apiKey = 'e7293a7cae42a4dc159ee84ec44469b4';
@@ -47,7 +49,10 @@ export class MoviesService {
 
     return this.http.get(url)
       .pipe(
-        map(data => data['results'])
+        map(data => {
+          this.movies = data['results'];
+          return data['results'];
+        })
       );
   }
 

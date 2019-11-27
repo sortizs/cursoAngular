@@ -1,1 +1,20 @@
-<p>movie works!</p>
+<div class="container main-container animated fadeIn fast">
+    <div class="row" *ngIf="movie">
+        <div class="col-4">
+            <img class="img-thumbnail img-fluid poster-img" alt="" [src]="posterImg()">
+        </div>
+        <div class="col-8">
+            <h2>{{ movie.title }}</h2>
+            <hr>
+            <h4>Overview</h4>
+            <p class="text-justify">
+                {{ movie.overview }}
+            </p>
+            <p>
+                Popularity: <span class="badge badge-primary">{{ movie.popularity }}</span>
+                <br>
+                Votes: <span class="badge badge-default">{{ movie.vote_count }}</span>
+            </p>
+        </div>
+    </div>
+</div>

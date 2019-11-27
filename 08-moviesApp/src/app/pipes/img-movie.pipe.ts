@@ -8,7 +8,13 @@ export class ImgMoviePipe implements PipeTransform {
 
   transform(movie: MovieModel): string {
     const url = "http://image.tmdb.org/t/p/w500";
-    return movie.backdrop_path ? url + movie.backdrop_path : url + movie.poster_path;
+    if (movie.backdrop_path) {
+      return url + movie.backdrop_path;
+    } else if (movie.poster_path) {
+      return url + movie.poster_path;
+    } else {
+      return '/assets/inf.png';
+    }
   }
 
 }
