@@ -26,7 +26,7 @@ import { EditComponent } from './components/map/edit.component';
     BrowserAnimationsModule,
     MaterialModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDEFuuH-NV937548L_9hGCZ6Zkh5sGnndo'
+      apiKey: ''
     }),
     ReactiveFormsModule
   ],
