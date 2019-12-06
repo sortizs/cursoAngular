@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
 export class YoutubeService {
 
   private apiUrl = 'https://www.googleapis.com/youtube/v3';
-  private apiKey = 'AIzaSyD12Uu1NyTrsuwVGBXIG9vdwub9xbJc_B8';
+  private apiKey = '';
   private playlist = 'PL-53GSjV53e5Mclk1PuQy5txsDzzR8cz7';
   private nextPageToken = '';
 
